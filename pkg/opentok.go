@@ -293,6 +293,6 @@ func (ot *OpenTok) GenerateToken(sessionId string, options map[string]interface{
 // decodes a sessionId into the metadata that it contains
 // @param     none
 // @returns   {string}    JWT
-func (ot *OpenTok) generateJwt() (string, error) {
+func (ot *OpenTok) GenerateJwt() (string, error) {
 	return GenerateJwt(ot.client.config)
 }

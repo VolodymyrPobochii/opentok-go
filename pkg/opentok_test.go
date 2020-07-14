@@ -140,13 +140,13 @@ func TestOpenTok_generateJwt(t *testing.T) {
 				env:       tt.fields.env,
 				client:    tt.fields.client,
 			}
-			got, err := ot.generateJwt()
+			got, err := ot.GenerateJwt()
 			if (err != nil) != tt.wantErr {
-				t.Errorf("generateJwt() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("GenerateJwt() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("generateJwt() got = %v, want %v", got, tt.want)
+				t.Errorf("GenerateJwt() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
