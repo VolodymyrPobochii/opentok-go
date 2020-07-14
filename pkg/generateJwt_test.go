@@ -1,4 +1,4 @@
-package opentok
+package pkg
 
 import "testing"
 
@@ -15,11 +15,11 @@ func TestGenerateJwt(t *testing.T) {
 		{
 			name: "generate JWT",
 			args: args{config: &Config{
-				ApiKey:       "1234567",
-				ApiSecret:    "bfguyaergfubfgabeabev",
-				Auth:         &Auth{Expire: 1},
+				ApiKey:    "1234567",
+				ApiSecret: "bfguyaergfubfgabeabev",
+				Auth:      &Auth{Expire: 1},
 			}},
-			want: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODU0ODk3MDMsImlhdCI6MTU4NTQ4OTcwMiwiaXNzIjoiMTIzNDU2NyIsImlzdCI6InByb2plY3QifQ.YKP8Xy_7UD3nLA5W5pvlLexkrX9V3lZ5wY78NnhIwAE",
+			want:    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODU0ODk3MDMsImlhdCI6MTU4NTQ4OTcwMiwiaXNzIjoiMTIzNDU2NyIsImlzdCI6InByb2plY3QifQ.YKP8Xy_7UD3nLA5W5pvlLexkrX9V3lZ5wY78NnhIwAE",
 			wantErr: false,
 		},
 	}

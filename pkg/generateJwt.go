@@ -1,4 +1,4 @@
-package opentok
+package pkg
 
 import (
 	"github.com/dgrijalva/jwt-go"

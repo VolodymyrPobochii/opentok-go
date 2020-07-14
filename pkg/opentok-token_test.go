@@ -1,4 +1,4 @@
-package opentok
+package pkg
 
 import "testing"
 
@@ -17,11 +17,11 @@ func TestEncodeToken(t *testing.T) {
 		{
 			name: "encode_token",
 			args: args{
-				tokenData: map[string]interface{}{"iss":"iss"},
+				tokenData: map[string]interface{}{"iss": "iss"},
 				apiKey:    "1234567",
 				apiSecret: "secret",
 			},
-			want: "T1==cGFydG5lcl9pZD0xMjM0NTY3JnNpZz0xNzNiYjVkMjU5NWM5MjhiYjg0MmJjNDk4ZWE1ODkzMjAzMDZhZDY4Omlzcz1pc3MmY3JlYXRlX3RpbWU9MTU4NTQ4NzMzNyZleHBpcmVfdGltZT0xNTg1NTczNzM3Jm5vbmNlPTE1ODU0ODczMzY4MzQwMCZyb2xlPXB1Ymxpc2hlcg==",
+			want:    "T1==cGFydG5lcl9pZD0xMjM0NTY3JnNpZz0xNzNiYjVkMjU5NWM5MjhiYjg0MmJjNDk4ZWE1ODkzMjAzMDZhZDY4Omlzcz1pc3MmY3JlYXRlX3RpbWU9MTU4NTQ4NzMzNyZleHBpcmVfdGltZT0xNTg1NTczNzM3Jm5vbmNlPTE1ODU0ODczMzY4MzQwMCZyb2xlPXB1Ymxpc2hlcg==",
 			wantErr: false,
 		},
 	}
@@ -56,7 +56,7 @@ func Test_signString(t *testing.T) {
 				unsigned: "unsigned_data",
 				secret:   "secretkey",
 			},
-			want: "19c185a9c0d81cc6bc554d3e926710dc500ffb22",
+			want:    "19c185a9c0d81cc6bc554d3e926710dc500ffb22",
 			wantErr: false,
 		},
 	}

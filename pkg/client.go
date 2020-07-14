@@ -1,4 +1,4 @@
-package opentok
+package pkg
 
 import (
 	"bytes"
@@ -63,16 +63,16 @@ func defaultConfig() *Config {
 		ApiUrl:    "https://api.opentok.com",
 		Endpoints: &Endpoints{
 			CreateSession:       "/session/create",
-			GetStream:           "/v2/project/%s/session/%s/stream/%s", 		//<%apiKey%>,<%sessionId%>,<%streamId%>
-			ListStreams:         "/v2/project/%s/session/%s/stream", 			//<%apiKey%>,<%sessionId%>
-			SetArchiveLayout:    "/v2/project/%s/archive/%s/layout", 			//<%apiKey%>,<%archiveId%>
-			SetStreamClassLists: "/v2/project/%s/session/%s/stream", 			//<%apiKey%>,<%sessionId%>
-			Dial:                "/v2/project/%s/dial", 						//<%apiKey%>
-			StartBroadcast:      "/v2/project/%s/broadcast", 					//<%apiKey%>
-			StopBroadcast:       "/v2/project/%s/broadcast/%s/stop", 			//<%apiKey%>,<%broadcastId%>
-			GetBroadcast:        "/v2/project/%s/broadcast/%s", 				//<%apiKey%>,<%broadcastId%>
-			SetBroadcastLayout:  "/v2/project/%s/broadcast/%s/layout", 			//<%apiKey%>,<%broadcastId%>
-			ListBroadcasts:      "/v2/project/%s/broadcast", 					//<%apiKey%>
+			GetStream:           "/v2/project/%s/session/%s/stream/%s", //<%apiKey%>,<%sessionId%>,<%streamId%>
+			ListStreams:         "/v2/project/%s/session/%s/stream",    //<%apiKey%>,<%sessionId%>
+			SetArchiveLayout:    "/v2/project/%s/archive/%s/layout",    //<%apiKey%>,<%archiveId%>
+			SetStreamClassLists: "/v2/project/%s/session/%s/stream",    //<%apiKey%>,<%sessionId%>
+			Dial:                "/v2/project/%s/dial",                 //<%apiKey%>
+			StartBroadcast:      "/v2/project/%s/broadcast",            //<%apiKey%>
+			StopBroadcast:       "/v2/project/%s/broadcast/%s/stop",    //<%apiKey%>,<%broadcastId%>
+			GetBroadcast:        "/v2/project/%s/broadcast/%s",         //<%apiKey%>,<%broadcastId%>
+			SetBroadcastLayout:  "/v2/project/%s/broadcast/%s/layout",  //<%apiKey%>,<%broadcastId%>
+			ListBroadcasts:      "/v2/project/%s/broadcast",            //<%apiKey%>
 		},
 		Request: &Request{Timeout: 20000}, // 20 seconds
 		Auth:    &Auth{Expire: 300},

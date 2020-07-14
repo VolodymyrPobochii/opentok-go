@@ -1,4 +1,4 @@
-package opentok
+package pkg
 
 import (
 	"reflect"
@@ -93,9 +93,9 @@ func TestNonce(t *testing.T) {
 		length int
 	}
 	tests := []struct {
-		name string
-		args args
-		want int64
+		name    string
+		args    args
+		want    int64
 		wantErr bool
 	}{
 		{"nonce", args{0}, 0, false},
