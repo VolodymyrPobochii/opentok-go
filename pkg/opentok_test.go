@@ -66,9 +66,9 @@ func TestNewOpenTok(t *testing.T) {
 			if err != nil {
 				t.Errorf("CreateSession() = %v", err)
 			}
-			token, err := ot.generateToken(session.sessionId, make(map[string]interface{}, 0))
+			token, err := ot.GenerateToken(session.sessionId, make(map[string]interface{}, 0))
 			if err != nil {
-				t.Errorf("generateToken() = %v", err)
+				t.Errorf("GenerateToken() = %v", err)
 			}
 			t.Log("token:", token)
 			if !reflect.DeepEqual(ot, tt.want) {
@@ -180,13 +180,13 @@ func TestOpenTok_generateToken(t *testing.T) {
 				env:       tt.fields.env,
 				client:    tt.fields.client,
 			}
-			got, err := ot.generateToken(tt.args.sessionId, tt.args.options)
+			got, err := ot.GenerateToken(tt.args.sessionId, tt.args.options)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("generateToken() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("GenerateToken() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("generateToken() got = %v, want %v", got, tt.want)
+				t.Errorf("GenerateToken() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

@@ -16,5 +16,5 @@ func NewSession(ot *OpenTok, sessionId string, properties map[string]interface{}
 }
 
 func (s *Session) generateToken(options map[string]interface{}) (string, error) {
-	return s.ot.generateToken(s.sessionId, options)
+	return s.ot.GenerateToken(s.sessionId, options)
 }

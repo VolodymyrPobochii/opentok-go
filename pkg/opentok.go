@@ -204,7 +204,7 @@ func (ot *OpenTok) CreateSession(options map[string]interface{}) (*Session, erro
 // </ul>
 //
 // @return The token string.
-func (ot *OpenTok) generateToken(sessionId string, options map[string]interface{}) (string, error) {
+func (ot *OpenTok) GenerateToken(sessionId string, options map[string]interface{}) (string, error) {
 	now := time.Now().UnixNano() / int64(time.Second)
 	if options == nil {
 		options = make(map[string]interface{})
