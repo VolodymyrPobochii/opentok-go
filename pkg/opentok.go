@@ -32,6 +32,10 @@ type OpenTok struct {
 	client    *Client
 }
 
+func (ot *OpenTok) ApiKey() string {
+	return ot.apiKey
+}
+
 func NewOpenTok(apiKey, apiSecret string, env interface{}) *OpenTok {
 	client := NewClient(apiKey, apiSecret)
 
@@ -239,13 +243,23 @@ func (ot *OpenTok) GenerateToken(sessionId string, options map[string]interface{
 		}
 		options["expire_time"] = exp
 	}
-	if options["data"] != nil {
-		options["connection_data"] = options["data"]
+	if data, ok := options["data"].(string); ok {
+		if len(data) > 1024 {
+			return "", errors.New("invalid data for token generation, must be a string with maximum length 1024")
+		}
+		options["connection_data"] = data
 	}
 	if initialLayoutClassList, ok := options["initialLayoutClassList"].([]string); ok {
-		options["initial_layout_class_list"] = strings.Join(initialLayoutClassList, " ")
+		joinedClassList := strings.Join(initialLayoutClassList, " ")
+		if len(joinedClassList) > 1024 {
+			return "", errors.New("invalid initial layout class list for token generation, must have concatenated length of less than 1024'")
+		}
+		options["initial_layout_class_list"] = joinedClassList
 	}
 	if initialLayoutClassList, ok := options["initialLayoutClassList"].(string); ok {
+		if len(initialLayoutClassList) > 1024 {
+			return "", errors.New("invalid initial layout class list for token generation, must have concatenated length of less than 1024'")
+		}
 		options["initial_layout_class_list"] = initialLayoutClassList
 	}
 
