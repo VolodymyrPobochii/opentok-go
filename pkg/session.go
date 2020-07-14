@@ -6,6 +6,10 @@ type Session struct {
 	properties map[string]interface{}
 }
 
+func (s *Session) Id() string {
+	return s.sessionId
+}
+
 // Represents an OpenTok session. Use the {@link OpenTok#CreateSession OpenTok.CreateSession()}
 // method to create an OpenTok session. The <code>sessionId</code> property of the Session object
 // is the session ID.
