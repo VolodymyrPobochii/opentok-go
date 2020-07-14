@@ -16,7 +16,7 @@ var (
 	ErrorNoSessionId    = errors.New("token cannot be generated without a sessionId parameter")
 	ErrorNoApiKey       = errors.New("token cannot be generated unless the session belongs to the API Key")
 	ErrorWrongMediaMode = errors.New("a session with always archive mode must also have the routed media mode")
-	ErrorInvalidIPv4    = errors.New("invalid arguments when calling createSession, location must be an IPv4 address")
+	ErrorInvalidIPv4    = errors.New("invalid arguments when calling CreateSession, location must be an IPv4 address")
 )
 
 type SessionInfo struct {
@@ -113,7 +113,7 @@ func (ot *OpenTok) decodeSessionId(sessionId string) (*SessionInfo, error) {
 	}, nil
 }
 
-func (ot *OpenTok) createSession(options map[string]interface{}) (*Session, error) {
+func (ot *OpenTok) CreateSession(options map[string]interface{}) (*Session, error) {
 	// whitelist the keys allowed
 	src := map[string]interface{}{"mediaMode": "relayed", "archiveMode": "manual"}
 	keys := []string{"mediaMode", "archiveMode", "location"}
@@ -146,7 +146,7 @@ func (ot *OpenTok) createSession(options map[string]interface{}) (*Session, erro
 
 	sessionId, err := ot.client.createSession(options)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Failed to createSession. %v", err))
+		return nil, errors.New(fmt.Sprintf("Failed to CreateSession. %v", err))
 	}
 	log.Println("created session:", sessionId)
 	return NewSession(ot, sessionId, backupOpts), nil

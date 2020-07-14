@@ -62,9 +62,9 @@ func TestNewOpenTok(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			ot := NewOpenTok(tt.args.apiKey, tt.args.apiSecret, tt.args.env)
-			session, err := ot.createSession(make(map[string]interface{}))
+			session, err := ot.CreateSession(make(map[string]interface{}))
 			if err != nil {
-				t.Errorf("createSession() = %v", err)
+				t.Errorf("CreateSession() = %v", err)
 			}
 			token, err := ot.generateToken(session.sessionId, make(map[string]interface{}, 0))
 			if err != nil {
@@ -105,13 +105,13 @@ func TestOpenTok_createSession(t *testing.T) {
 				env:       tt.fields.env,
 				client:    tt.fields.client,
 			}
-			got, err := ot.createSession(tt.args.options)
+			got, err := ot.CreateSession(tt.args.options)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("createSession() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("CreateSession() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("createSession() got = %v, want %v", got, tt.want)
+				t.Errorf("CreateSession() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

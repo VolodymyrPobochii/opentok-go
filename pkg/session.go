@@ -6,7 +6,7 @@ type Session struct {
 	properties map[string]interface{}
 }
 
-// Represents an OpenTok session. Use the {@link OpenTok#createSession OpenTok.createSession()}
+// Represents an OpenTok session. Use the {@link OpenTok#CreateSession OpenTok.CreateSession()}
 // method to create an OpenTok session. The <code>sessionId</code> property of the Session object
 // is the session ID.
 // @property {String} sessionId The session ID.
