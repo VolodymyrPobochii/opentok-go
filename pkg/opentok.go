@@ -121,6 +121,9 @@ func (ot *OpenTok) CreateSession(options map[string]interface{}) (*Session, erro
 	// whitelist the keys allowed
 	src := map[string]interface{}{"mediaMode": "relayed", "archiveMode": "manual"}
 	keys := []string{"mediaMode", "archiveMode", "location"}
+	if options == nil {
+		options = make(map[string]interface{}, len(src))
+	}
 	options = Pick(Defaults(options, src), keys)
 
 	if options["mediaMode"] != "routed" && options["mediaMode"] != "relayed" {
