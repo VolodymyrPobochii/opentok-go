@@ -27,11 +27,17 @@ func TestOpenTok_decodeSessionId(t *testing.T) {
 			args{sessionId: "2_MX40NjUxMzYwMn5-MTU4NDgwNzY3NTA2Nn51WVJVSUtXQkZ2U3o2ZmhyWkp2QW1qTW1-fg"},
 			&SessionInfo{"46513602", "", &time2},
 		},
+		{
+			"decode_session3",
+			args{sessionId: "2_MX40NjcwMDIzMn5-MTU5NDcyNjAxNTA5Nn56OFd2czl6cXlnM3RQQkI0cEFCR2NlaEp-fg"},
+			&SessionInfo{"46700232", "", nil},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			ot := &OpenTok{}
 			if got, _ := ot.decodeSessionId(tt.args.sessionId); !reflect.DeepEqual(got, tt.want) {
+				//t.Log(got.createTime.Nanosecond()*int(time.Millisecond))
 				t.Errorf("decodeSessionId() = %v, want %v", got, tt.want)
 			}
 		})
