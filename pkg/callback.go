@@ -1,5 +1,11 @@
 package pkg
 
+import (
+	"encoding/base64"
+	"errors"
+	"strings"
+)
+
 const (
 	EventConnectionCreated    = "connectionCreated"
 	EventConnectionDestroyed  = "connectionDestroyed"
@@ -48,4 +54,28 @@ type SessionCallback struct {
 	Callback
 	Connection *Connection `json:"connection,omitempty"`
 	Stream     *Stream     `json:"stream,omitempty"`
+}
+
+func (se *SessionCallback) ParseData() (uid string, chatId string, videoCallId string, err error) {
+	var dataString string
+	if connection := se.Connection; connection != nil {
+		dataString = connection.Data
+	}
+
+	if stream := se.Stream; stream != nil {
+		dataString = stream.Connection.Data
+	}
+
+	if len(dataString) == 0 {
+		err = errors.New("connection/stream is not present")
+		return
+	}
+
+	if rawData, err := base64.StdEncoding.DecodeString(dataString); err == nil {
+		dataSplit := strings.Split(string(rawData), "&")
+		uid = dataSplit[0]
+		chatId = dataSplit[1]
+		videoCallId = dataSplit[2]
+	}
+	return
 }
